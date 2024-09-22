@@ -30,18 +30,18 @@ on:
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
-        default: "repo init -u https://github.com/BlissRoms/platform_manifest.git -b arcadia-next --git-lfs"
+        default: "repo init -u https://github.com/RisingTechOSS/android -b thirteen --git-lfs"
       REMOVALS:
         description: "Folders to be removed before syncing:"
         required: false
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/nathannxx/local_manifests_RMX1941'
+        default: 'https://github.com/nathannxx/local_manifests_ngising'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'RMX1941'
+        default: 'ngising'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
@@ -49,11 +49,11 @@ on:
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "bliss_RMX1941"
+        default: "lineage_RMX1941"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
-        default: 'blissify RMX1941'
+        default: 'mka bacon -jX && brunch "RMX1941" userdebug'
       BUILD_TYPE:
         description: 'Type of build:'
         required: true
