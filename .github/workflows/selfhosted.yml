@@ -472,6 +472,7 @@ jobs:
 
 
         crave run --no-patch --${CLEAN} "rm -rf .repo/local_manifests/ ${{ github.event.inputs.REMOVALS }} && \
+        wget https://raw.githubusercontent.com/nathannxx/gabut/refs/heads/main/deps.sh && bash deps.sh
         
         # Clone local_manifests repository
         $BUILD_DIFFERENT_ROM ; \
