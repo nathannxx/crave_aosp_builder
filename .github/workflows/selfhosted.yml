@@ -30,18 +30,18 @@ on:
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
-        default: "repo init -u https://github.com/BlissRoms/platform_manifest.git -b arcadia-next --git-lfs"
+        default: "repo init --depth=1 --no-repo-verify -u https://github.com/AfterLifePrjkt13/android_manifest.git -b LTS -g default,-mips,-darwin,-notdefault"
       REMOVALS:
         description: "Folders to be removed before syncing:"
         required: false
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/nathannxx/local_manifests_RMX1941'
+        default: 'https://github.com/nathannxx/local_manifests_nss'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'RMX1941'
+        default: 'nss'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
@@ -49,11 +49,11 @@ on:
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "bliss_RMX1941"
+        default: "afterlife_RMX1941"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
-        default: 'blissify RMX1941'
+        default: 'm afterlife -j$'
       BUILD_TYPE:
         description: 'Type of build:'
         required: true
@@ -472,7 +472,6 @@ jobs:
 
 
         crave run --no-patch --${CLEAN} "rm -rf .repo/local_manifests/ ${{ github.event.inputs.REMOVALS }} && \
-        wget https://raw.githubusercontent.com/nathannxx/gabut/refs/heads/main/deps.sh && bash deps.sh && \
         
         # Clone local_manifests repository
         $BUILD_DIFFERENT_ROM ; \
@@ -491,7 +490,6 @@ jobs:
 
         # Build the ROM
         $LUNCH && \
-        make installclean && \
         ${{ github.event.inputs.BUILD_COMMAND }}"
       timeout-minutes: 1440
 
