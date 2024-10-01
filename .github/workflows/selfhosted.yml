@@ -37,11 +37,11 @@ on:
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/nathannxx/local_manifests_nss'
+        default: 'https://github.com/nathannxx/local_manifests_RMX1941'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'nss'
+        default: 'RMX1941'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
