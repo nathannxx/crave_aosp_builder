@@ -484,7 +484,6 @@ jobs:
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
         export BUILD_HOSTNAME=crave ; \
-        export AFTERLIFE_MAINTAINER=nathan:3 ; \
         source build/envsetup.sh && \
 
         echo "Repository: ${{ github.repository }}"; \
@@ -493,7 +492,8 @@ jobs:
         # Build the ROM
         $LUNCH && \
         ${{ github.event.inputs.BUILD_COMMAND }} $$ \
-        cd out/target/product/phhgsi_arm64_ab/; zip -r9 nooz.zip system.img; curl bashupload.com -T nooz.zip"
+        cd out/target/product/phhgsi_arm64_ab/; zip -r9 nooz.zip system.img; curl bashupload.com -T nooz.zip
+        cd $PROJECTFOLDER"
       timeout-minutes: 1440
 
       # Send Build 'status' notification (Success)
