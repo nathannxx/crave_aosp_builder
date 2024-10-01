@@ -485,6 +485,7 @@ jobs:
         export BUILD_USERNAME=${{ github.actor }} ; \
         export BUILD_HOSTNAME=crave ; \
         export AFTERLIFE_MAINTAINER=nathan:3 ; \
+        export ALLOW_MISSING_DEPENDENCIES=true
         source build/envsetup.sh && \
 
         echo "Repository: ${{ github.repository }}"; \
