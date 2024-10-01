@@ -53,7 +53,7 @@ on:
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
-        default: 'm afterlife -j$'
+        default: 'm afterlife'
       BUILD_TYPE:
         description: 'Type of build:'
         required: true
@@ -483,6 +483,7 @@ jobs:
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
         export BUILD_HOSTNAME=crave ; \
+        export AFTERLIFE_MAINTAINER=nathan:3 ; \
         source build/envsetup.sh && \
 
         echo "Repository: ${{ github.repository }}"; \
