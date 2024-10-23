@@ -13,7 +13,7 @@ on:
       BASE_PROJECT:
         description: 'Choose a base project:'
         required: true
-        default: 'AOSP'
+        default: 'LineageOS 21.0'
         type: choice
         options:
           - 'LineageOS 20.0'
@@ -30,18 +30,18 @@ on:
       BUILD_DIFFERENT_ROM:
         description: "Command to initialize a different 'repo' project:"
         required: false
-        default: "repo init --depth=1 --no-repo-verify -u https://github.com/AfterLifePrjkt13/android_manifest.git -b LTS -g default,-mips,-darwin,-notdefault"
+        default: "repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs"
       REMOVALS:
         description: "Folders to be removed before syncing:"
         required: false
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/nathannxx/local_manifests_RMX1941'
+        default: 'https://github.com/imnathanzero/local_manifests_soogs'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'RMX1941'
+        default: 'soogs'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
@@ -49,11 +49,11 @@ on:
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "afterlife_RMX1941"
+        default: "lineage_RMX1941"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
-        default: 'm afterlife'
+        default: 'brunch RMX1941'
       BUILD_TYPE:
         description: 'Type of build:'
         required: true
@@ -472,7 +472,6 @@ jobs:
 
 
         crave run --no-patch --${CLEAN} "rm -rf .repo/local_manifests/ ${{ github.event.inputs.REMOVALS }} && \
-        wget https://raw.githubusercontent.com/nathannxx/gabut/refs/heads/main/deps.sh && bash deps.sh
         
         # Clone local_manifests repository
         $BUILD_DIFFERENT_ROM ; \
@@ -484,8 +483,6 @@ jobs:
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
         export BUILD_HOSTNAME=crave ; \
-        export AFTERLIFE_MAINTAINER=nathan:3 ; \
-        export ALLOW_MISSING_DEPENDENCIES=true
         source build/envsetup.sh && \
 
         echo "Repository: ${{ github.repository }}"; \
